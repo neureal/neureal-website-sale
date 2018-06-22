@@ -1,32 +1,52 @@
 var ethId = 12;
 
-const ws = new WebSocket("wss://mainnet.infura.io/ws")
+const infuraUrl = 'wss://ropsten.infura.io/ws/g97D5zS7v5gxGRgzQV60'
 
-ws.onopen = function() {
-  // sendEthGetLogs(1)
+const methodName = 'eth_getLogs'
+const topics = ['0x19287f35bf9ce71d59481bf0e504fc7f02e898d429c85d11f5276bc24bd903c3']
+const fromBlock = '0x35350B'
+const toBlock = 'latest'
+
+const socket = new WebSocket(infuraUrl)
+
+socket.onopen = function() {
+  getTopicLogs()
 }
 
-ws.onmessage = function(message){
+socket.onmessage = function(message){
   var data = JSON.parse(message.data);
   displayTopicLogs(data.result)
 }
 
 $(function(){
   $('#displayTopic').click(function(){
-    const topicName = $('#id_topic').val();
-    getTopicLogs(ethId, topicName)
+    getTopicLogs()
   });
 })
 
-
-function getTopicLogs(ethId, topicName){
-  // const params = [{"address":["0x06012c8cf97BEaD5deAe237070F9587f8E7A266d"], "fromBlock": "0x6e616e6f706f6f6c2e6f7267", "toBlock": "0x65746865726d696e652d65753130"}]
-  const params = ['0x06012c8cf97BEaD5deAe237070F9587f8E7A266d', 'latest']
-  const message = JSON.stringify({jsonrpc: "2.0", id: ethId, method: 'eth_getBalance', params: params})
-  ws.send(message)
+function getTopicLogs(){
+  const message = JSON.stringify({
+    "jsonrpc": "2.0",
+    "id": ethId,
+    "method": methodName,
+    "params": [{fromBlock, toBlock, topics}]
+  })
+  socket.send(message)
 }
 
 
 function displayTopicLogs(logs){
-  console.log(logs)
+  let data = {}
+  if(logs.length > 0){
+    data = logs[0]
+  }
+  let values = data.data.replace('0x', '').match(/.{1,64}/g);
+  values.forEach(function(value, index) {
+    values[index] = parseInt(value, 16);
+  });
+  $('#text_token').text(data.blockHash)
+  console.log(data.blockHash)
+  $('#text_total_eth').text(values[0])
 }
+
+
