@@ -39,14 +39,13 @@ function displayTopicLogs(logs){
   let data = {}
   if(logs.length > 0){
     data = logs[0]
+    let values = data.data.replace('0x', '').match(/.{1,64}/g);
+    values.forEach(function(value, index) {
+      values[index] = parseInt(value, 16);
+    });
+    $('#text_token').text(values[1])
+    $('#text_total_eth').text(values[0])
   }
-  let values = data.data.replace('0x', '').match(/.{1,64}/g);
-  values.forEach(function(value, index) {
-    values[index] = parseInt(value, 16);
-  });
-  $('#text_token').text(data.blockHash)
-  console.log(data.blockHash)
-  $('#text_total_eth').text(values[0])
 }
 
 
