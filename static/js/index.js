@@ -1,16 +1,16 @@
-var ethId = 12;
+var ethId = 1;
+var dataFetcher;
 
 const infuraUrl = 'wss://ropsten.infura.io/ws/g97D5zS7v5gxGRgzQV60'
 
-const methodName = 'eth_getLogs'
-const topics = ['0x19287f35bf9ce71d59481bf0e504fc7f02e898d429c85d11f5276bc24bd903c3']
-const fromBlock = '0x35350B'
-const toBlock = 'latest'
 
 const socket = new WebSocket(infuraUrl)
 
 socket.onopen = function() {
   getTopicLogs()
+  dataFetcher = setInterval(function() {
+    getTopicLogs()
+  }, 10000);
 }
 
 socket.onmessage = function(message){
@@ -18,11 +18,15 @@ socket.onmessage = function(message){
   displayTopicLogs(data.result)
 }
 
-$(function(){
-  $('#displayTopic').click(function(){
-    getTopicLogs()
-  });
-})
+socket.onclose = function(){
+  clearInterval(dataFetcher)
+}
+
+
+const methodName = 'eth_getLogs'
+const topics = ['0x19287f35bf9ce71d59481bf0e504fc7f02e898d429c85d11f5276bc24bd903c3']
+let fromBlock = 'earliest'
+let toBlock = 'latest'
 
 function getTopicLogs(){
   const message = JSON.stringify({
@@ -31,6 +35,7 @@ function getTopicLogs(){
     "method": methodName,
     "params": [{fromBlock, toBlock, topics}]
   })
+
   socket.send(message)
 }
 
@@ -39,6 +44,7 @@ function displayTopicLogs(logs){
   let data = {}
   if(logs.length > 0){
     data = logs[0]
+    fromBlock = data.blockNumber
     let values = data.data.replace('0x', '').match(/.{1,64}/g);
     values.forEach(function(value, index) {
       values[index] = parseInt(value, 16);
