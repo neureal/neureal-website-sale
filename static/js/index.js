@@ -1,3 +1,5 @@
+const socket = new WebSocket('wss://ropsten.infura.io/ws/g97D5zS7v5gxGRgzQV60');
+
 var $textTokenEl = '#text_token';
 var $textTokenTotalEth = '#text_total_eth';
 
@@ -5,8 +7,7 @@ let requestId = 1;
 let fromBlock = 'earliest';
 let toBlock = 'latest';
 let topics = ['0x19287f35bf9ce71d59481bf0e504fc7f02e898d429c85d11f5276bc24bd903c3'];
-
-const socket = new WebSocket('wss://ropsten.infura.io/ws/g97D5zS7v5gxGRgzQV60');
+let address = '0x90D276829aF59CdF48408f6595dA46733471d2eF';
 
 socket.onopen = function() {
   socketSendMessage();
@@ -42,7 +43,7 @@ function socketSendMessage(){
     "jsonrpc": "2.0",
     "id": requestId,
     "method": "eth_getLogs",
-    "params": [{fromBlock, toBlock, topics}]
+    "params": [{fromBlock, toBlock, topics, address}]
   }));
   requestId ++;
 }
