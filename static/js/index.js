@@ -7,7 +7,7 @@ let requestId = 1;
 let fromBlock = 'earliest';
 let toBlock = 'latest';
 let topics = ['0x19287f35bf9ce71d59481bf0e504fc7f02e898d429c85d11f5276bc24bd903c3'];
-let address = '0x90D276829aF59CdF48408f6595dA46733471d2eF';
+let address = '0x9F56ec099d988b1016CcE7f14c002b0943d635E5';
 
 socket.onopen = function() {
   socketSendMessage();
@@ -20,7 +20,7 @@ socket.onmessage = function(message){
   if (!result.length)
     return
 
-  var firstLog = result[0];
+  var firstLog = result[result.length - 1];
   fromBlock = firstLog.blockNumber;
   values = parseHex2Dig(firstLog.data);
 
