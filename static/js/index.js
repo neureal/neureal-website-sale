@@ -17,15 +17,26 @@ socket.onmessage = function(message){
   var data = JSON.parse(message.data);
   var result = data.result;
 
-  if (!result.length)
+  if (!result)
     return
 
   var firstLog = result[result.length - 1];
   fromBlock = firstLog.blockNumber;
   values = parseHex2Dig(firstLog.data);
 
-  $($textTokenEl).text(values[0]);
-  $($textTokenTotalEth).text(values[1]);
+  var neurealTokens = values[0];
+  var totalEth = values[1];
+
+  if (neurealTokens > 0){
+    neurealTokens = neurealTokens / 10 ** 18;
+  }
+
+  if (totalEth > 0){
+    totalEth = totalEth / 10 ** 18;
+  }
+
+  $($textTokenEl).text(parseInt(neurealTokens));
+  $($textTokenTotalEth).text(totalEth.toFixed(3));
 }
 
 var dataFetcher;
