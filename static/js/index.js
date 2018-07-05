@@ -1,7 +1,7 @@
 
-var page = (function() {
-  var rdy = function() {
-    $('#button_agreement_agree').click(function() {
+var page = (function () {
+  var rdy = function () {
+    $('#button_agreement_agree').click(function () {
       $('#modal_agreement').removeClass('w3-show');
     });
 
@@ -13,11 +13,11 @@ var page = (function() {
     let fromBlock = 'earliest';
     let toBlock = 'latest';
 
-    socket.onopen = function() {
+    socket.onopen = function () {
       socketSendMessage();
-    }
+    };
 
-    socket.onmessage = function(message) {
+    socket.onmessage = function (message) {
       var data = JSON.parse(message.data);
       var result = data.result;
       if (!result) return;
@@ -36,19 +36,19 @@ var page = (function() {
       $('#div_live_data').removeClass('w3-hide');
       $('#text_token').text(parseInt(neurealTokens));
       $('#text_total_eth').text(totalEth.toFixed(3));
-    }
+    };
 
     var dataFetcher;
 
-    socket.onclose = function() {
+    socket.onclose = function () {
       if (dataFetcher) clearInterval(dataFetcher);
-    }
+    };
 
-    dataFetcher = setInterval(function() {
+    dataFetcher = setInterval(function () {
       socketSendMessage();
     }, 10000);
 
-    function socketSendMessage() {
+    function socketSendMessage () {
       socket.send(JSON.stringify({
         'jsonrpc': '2.0',
         'id': requestId,
@@ -58,7 +58,7 @@ var page = (function() {
       requestId++;
     }
 
-    function parseHex2Dig(data) {
+    function parseHex2Dig (data) {
       let values = data.replace('0x', '');
       if (!values) return [];
 
@@ -68,7 +68,6 @@ var page = (function() {
       });
       return values;
     }
-
   };
   return { rdy: rdy };
 })();
