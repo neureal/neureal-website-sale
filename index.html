@@ -1,37 +1,132 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Neureal Token Generation Event</title>
-    
-    <link rel="stylesheet" type="text/css" href="static/css/w3.css">
-    <link rel="stylesheet" type="text/css" href="static/css/index.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="static/js/index.js"></script>
-  </head>
-  <body>
-      <noscript>TODO put stuff in here for no JS, or just dont do JS</noscript>
-      <div class="w3-panel w3-center">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neureal Token Generation Event</title>
+
+  <link rel="shortcut icon" type="image/png" href="./favicon.ico"/>
+  <link rel="stylesheet" type="text/css" href="static/css/w3.css">
+  <link rel="stylesheet" type="text/css" href="static/css/index.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="static/js/index.js"></script>
+</head>
+
+<body>
+  <!-- <script src="./static//js//scripts.js"></script> -->
+  <div class="w3-top">
+    <div class="w3-bar w3-white w3-wide w3-card">
+      <a href="#home" class="w3-bar-item">
         <img src="static/images/neureal-logo-light-blue.svg">
+      </a>
+    </div>
+  </div>
+  <div class='w3-display-container w3-animate-opacity banner'>
+    <div style="white-space:nowrap;">
+      <div class="w3-container">
+        <span class="w3-center w3-padding-large w3-xlarge w3-wide w3-animate-opacity w3-display-topmiddle banner-padding">
+          <img class="logo-size" src="./static/images///logo-symbol.svg" alt="Neureal Image">
+        </span>
       </div>
-      <div class="w3-panel w3-center w3-animate-zoom">
-        <h1 class="w3-text-blue"><b>The Neureal Token Generation Event is Live!</b></h1>
+      <div class="w3-container w3-text-white w3-montserrat-large w3-center" style="margin-top: 350px;">
+        <div>
+          <h3 class="w3-montserrat">Total number of token distributed
+            <b id="text_total_token">LIVE DATA</b>
+          </h3>
+        </div>
+        <div class="w3-montserrat-small">Address:</div>
+        <div class="w3-montserrat">0x0000000000000000000000000000000000000000</div>
+        <div class="w3-montserrat-small">Symbol:
+          <b>NEUREAL</b>
+        </div>
+        <div class="w3-montserrat-small">Decimal places:
+          <b>18</b>
+        </div>
+        <div class="w3-panel w3-center">
+          <h5>
+            <b>
+              <a class="w3-button w3-theme-orange-light w3-round-large w3-montserrat btn-join" href="https://join.neureal.net/">Join the sale</a>
+            </b>
+          </h5>
+        </div>
       </div>
-      <div class="w3-panel w3-center">
-        <h2><b><a href="https://join.neureal.net/">Join the sale</a></b></h2>
+    </div>
+  </div>
+
+  <!-- "Total Eth" Card Section -->
+  <div class="w3-round-xlarge w3-middle w3-animate-opacity w3-white progress-bar">
+    <div class="w3-card-4 w3-round-xlarge">
+      <div class="w3-container">
+        <!-- Eth Raised -->
+        <div class="w3-text-dark-gray w3-left-align w3-montserrat sale-header sale-margin ">TOTAL ETH RAISED
+          <div id="text_total_eth w3-right" style="text-align: right; display: inline-block">LIVE DATA</div>
+        </div>
+        <hr>
+        <h5 class="w3-text-orange w3-left w3-montserrat sale-header">0 ETH</h5>
+        <h5 class="w3-text-orange w3-right w3-montserrat sale-header">200,000 ETH</h5>
       </div>
-      <div class="w3-panel w3-center">
-        <h2>Neureal Token - TGE Contract Information<br>
-          Address: <b>0x0000000000000000000000000000000000000000</b><br>
-          Symbol: <b>NEUREAL</b><br>
-          Decimal places: <b>18</b><br>
-          </h2>
+
+      <div class="w3-light-grey w3-tiny w3-round-xlarge">
+        <div class="w3-container w3-center w3-light-blue w3-round-xlarge" style="width:72%; background: linear-gradient(-90deg, #08e0e0, #0fc0fb);">
+          <div class="w3-text-white">72%</div>
+        </div>
       </div>
-      <div class="w3-panel w3-center">
-        <h2 class="w3-text-orange">Total # of token distributed <b id="text_total_token">LIVE DATA</b></h2>
-        <h2 class="w3-text-orange">Total ETH raised <b id="text_total_eth">LIVE DATA</b></h2>
+    </div>
+  </div>
+
+  <!-- "Total Eth" Card Section -->
+  <div class="w3-content w3-padding-large w3-margin-top">
+      <div class="w3-container">
+          <video class='video-neureal' controls>
+            <source src="./static//images//video//neureal-video.mp4" type="video/mp4" /> Your browser does not support the video tag.
+          </video>
       </div>
-  </body>
+    </div>
+
+
+  <div class="w3-content w3-padding-large w3-margin-top" >
+      <div class="w3-cell-row">
+
+          <div class="w3-container w3-mobile w3-cell" style="width: 50%">
+             <button class="w3-btn w3-border-blue w3-border w3-text-blue" style="width: 100%">FAQ</button>
+          </div>
+        
+          <div class="w3-container w3-mobile w3-cell" style="width: 50%">
+             <button class="w3-btn w3-border-blue w3-border w3-text-blue" style="width: 100%">More Info</button>
+          </div>
+        
+        </div>
+    </div>
+  
+  <div class="w3-container">
+    <footer class="w3-container w3-padding-64 w3-center w3-xlarge">
+      <a href="https://github.com/neureal" target="_blank">
+        <img class='social-icons-footer' src="./static//images//icons//social-github.svg" fill="black" alt="github">
+      </a>
+      <a href="https://www.facebook.com/NeurealAI" target="_blank">
+        <img class='social-icons-footer' src="./static//images//icons//social-facebook.svg" fill="black" alt="facebook">
+      </a>
+      <a href="https://www.reddit.com/r/Neureal/" target="_blank">
+        <img class='social-icons-footer' src="./static//images//icons//social-reddit.svg" fill="black" alt="reddit">
+      </a>
+      <a href="https://twitter.com/neurealai" target="_blank">
+        <img class='social-icons-footer' src="./static//images//icons//social-twitter.svg" fill="black" alt="twitter">
+      </a>
+      <a href="https://www.linkedin.com/company/neureal/" target="_blank">
+        <img class='social-icons-footer' src="./static//images//icons///social-linkedin.svg" fill="black" alt="linkedin">
+      </a>
+      <a href="https://www.youtube.com/channel/UCkebLOaWk9vplZ6ZWLcbvtA" target="_blank">
+        <img class='social-icons-footer' src="./static//images//icons//social-youtube.svg" fill="black" alt="youtube">
+      </a>
+      <a href="https://t.me/joinchat/C8JtFkMMkD2O6skOEaFn7Q" target="_blank">
+        <img class='telegram-logo-footer' src="./static//images//icons///social-telegram.png" alt="telegram">
+      </a>
+    </footer>
+  </div>
+  </div>
+</body>
+
 </html>
